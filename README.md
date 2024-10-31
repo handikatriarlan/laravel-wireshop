@@ -1,159 +1,66 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
 <p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-  </a>
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# URLShortly Backend - Laravel API
+## About Laravel
 
-URLShortly is a URL shortener service built using Laravel for the backend, which handles URL storage, slug generation, and redirection.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Requirements
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
--   [PHP 8.2 or higher](https://www.php.net/downloads.php)
--   [Laravel 11](https://www.laravel.com/)
--   [Laragon](https://laragon.org/download/) (Optional, for local development)
--   [Node.js](https://nodejs.org/en)
--   [Composer](https://getcomposer.org/download/)
--   [Postman](https://www.postman.com/downloads/) (for API testing)
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Features
+## Learning Laravel
 
--   **Create short URLs:** Users can provide a long URL and an optional custom slug.
--   **Redirect to the original URL:** Users are redirected to the original long URL when accessing the short link.
--   **Error handling:** Provides appropriate error messages when the URL creation fails or the slug doesn't exist.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-## Technologies Used
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
--   **Laravel 11:** The PHP framework used for routing, validation, and API responses.
--   **MySQL:** Database used to store URLs and slugs.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Installation
+## Laravel Sponsors
 
-### 1. Clone the Repository
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-```bash
-git clone https://github.com/handikatriarlan/URLShortly-be.git
-```
+### Premium Partners
 
-### 2. Navigate to the Project Directory
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-```bash
-cd URLShortly-be
-```
+## Contributing
 
-### 3. Install PHP Dependencies
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Run the following command to install the required PHP dependencies using Composer:
+## Code of Conduct
 
-```bash
-composer install
-```
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-### 4. Configure Environment Variables
+## Security Vulnerabilities
 
-Copy the `.env.example` file to `.env`:
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-```bash
-cp .env.example .env
-```
+## License
 
-### 5. Generate Application Key
-
-Generate the application key:
-
-```bash
-php artisan key:generate
-```
-
-### 6. Setup the Database
-
-Run the migrations to set up the database tables:
-
-```bash
-php artisan migrate
-```
-
-If you encounter any database connection issues, edit your `.env` file to match your local database credentials.
-
-#### Example Before:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-#### Example After:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=shortlink
-DB_USERNAME=handikatriarlan
-DB_PASSWORD=arlan123
-```
-
-### 7. Install Node.js Dependencies
-
-You will also need to install the Node.js dependencies for asset compilation:
-
-```bash
-npm install
-```
-
-### 8. Serve the Application
-
-Run the application using the built-in Laravel server:
-
-```bash
-php artisan serve
-```
-
-The application will be available at `http://127.0.0.1:8000`.
-
-### 9. Compile JavaScript and CSS Assets
-
-In a separate terminal, run the following command to compile your assets:
-
-```bash
-npm run dev
-```
-
-### 10. API Testing
-
-To test the API, you can use [Postman](https://www.postman.com) or any other API testing tool. Be sure to add the `Access-Token` header with the correct token value (`abc` in this case) for routes protected by the `VerifyAccessToken` middleware.
-
-#### Create a Short URL
-
-POST `/api/short-link` <br>
-Request body:
-
-```json
-{
-    "url": "https://your-long-url.com",
-    "slug": "your-slug"
-}
-```
-
-Response:
-
-```json
-{
-    "message": "Link created successfully"
-}
-```
-
-#### Redirect to Original URL
-
-GET `/your-slug` <br>
-Redirects to the original long URL associated with the provided slug.
-
-#### Error Handling
-
--   404 Not Found: When a non-existent slug is accessed.
--   500 Internal Server Error: For database or other server-side issues.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
