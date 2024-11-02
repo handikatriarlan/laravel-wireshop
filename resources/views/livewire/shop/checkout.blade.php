@@ -3,6 +3,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Checkout</div>
+
                 <div class="card-body">
                     @if ($formCheckout)
                         <form wire:submit.prevent="checkout">
@@ -18,6 +19,7 @@
                                             </span>
                                         @enderror
                                     </div>
+
                                     <div class="col">
                                         <input wire:model="last_name" type="text"
                                             class="form-control @error('last_name') is-invalid @enderror"
@@ -29,6 +31,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-row mb-2">
                                     <div class="col">
                                         <input wire:model="email" type="email"
@@ -40,6 +43,7 @@
                                             </span>
                                         @enderror
                                     </div>
+
                                     <div class="col">
                                         <input wire:model="phone" type="text"
                                             class="form-control @error('phone') is-invalid @enderror"
@@ -51,6 +55,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-row mb-2">
                                     <div class="col">
                                         <label for="">Address</label>
@@ -63,6 +68,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-row mb-2">
                                     <div class="col">
                                         <input wire:model="city" type="text"
@@ -73,6 +79,7 @@
                                             </span>
                                         @enderror
                                     </div>
+
                                     <div class="col">
                                         <input wire:model="postal_code" type="text"
                                             class="form-control @error('postal_code') is-invalid @enderror"
@@ -84,9 +91,32 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                             </div>
                         </form>
+                    @else
+                        <button wire:click="$emit('payment', '{{ $snapToken }}')"
+                            class="btn btn-primary">Payment</button>
+                        <script>
+                            window.livewire.on('payment', function(snapToken) {
+                                snap.pay(snapToken, {
+                                    // Optional
+                                    onSuccess: function(result) {
+                                        window.livewire.emit('emptyCart');
+                                        window.location.href = "/shop";
+                                    },
+                                    // Optional
+                                    onPending: function(result) {
+                                        location.reload();
+                                    },
+                                    // Optional
+                                    onError: function(result) {
+                                        location.reload();
+                                    }
+                                });
+                            });
+                        </script>
                     @endif
                 </div>
             </div>
