@@ -8,10 +8,12 @@ use Livewire\Component;
 class Cart extends Component
 {
     public $cart;
+    public $isCartEmpty;
 
     public function mount()
     {
         $this->cart = FacadesCart::get();
+        $this->checkIfCartIsEmpty();
     }
 
     public function render()
@@ -23,6 +25,12 @@ class Cart extends Component
     {
         FacadesCart::remove($id);
         $this->cart = FacadesCart::get();
+        $this->checkIfCartIsEmpty();
         $this->emit('removeFromCart');
+    }
+
+    public function checkIfCartIsEmpty()
+    {
+        $this->isCartEmpty = empty($this->cart['products']);
     }
 }
